@@ -1,7 +1,6 @@
 package com.example.contadorkotlin.charts
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.*
@@ -38,13 +37,11 @@ class OwnChart {
     @SuppressLint("NotConstructor", "SuspiciousIndentation")
     @Composable
     fun OwnChart(url: String, maxValue: Int) {
-        Log.d("OwnChart", "Composing OwnChart with URL: $url") // Add Log here
         val webSocketManager = remember { WebSocketManager(url) }
         val scope = rememberCoroutineScope()
         var chartData by remember { mutableStateOf<List<OwnChartDetails>>(emptyList()) }
 
-        LaunchedEffect(url) { // Key LaunchedEffect on the URL
-            Log.d("OwnChart", "LaunchedEffect triggered for URL: $url") // Add Log here
+        LaunchedEffect(url) {
             webSocketManager.connect()
 
             scope.launch {
@@ -66,9 +63,8 @@ class OwnChart {
             }
         }
 
-        DisposableEffect(webSocketManager) { // Key DisposableEffect on webSocketManager
+        DisposableEffect(webSocketManager) {
             onDispose {
-                Log.d("OwnChart", "DisposableEffect: Disconnecting WebSocket") // Add Log here
                 webSocketManager.disconnect()
             }
         }

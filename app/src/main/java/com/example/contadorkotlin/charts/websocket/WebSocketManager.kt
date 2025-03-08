@@ -17,7 +17,6 @@ class WebSocketManager(private val url: String) {
     private val coroutineScope = CoroutineScope(Dispatchers.IO)
     private val mutex = kotlinx.coroutines.sync.Mutex()
 
-    @OptIn(ExperimentalTime::class)
     fun connect() {
         coroutineScope.launch {
             mutex.lock()
@@ -48,7 +47,6 @@ class WebSocketManager(private val url: String) {
         }
     }
 
-    @OptIn(ExperimentalTime::class)
     private fun reconnect() {
         coroutineScope.launch {
             delay(5.seconds)
