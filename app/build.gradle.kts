@@ -42,6 +42,7 @@ android {
 }
 
 dependencies {
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation(libs.core)
     implementation(libs.vico.compose)
     implementation(libs.vico.views)
