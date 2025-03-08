@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.contadorkotlin.charts.ChartUsingVico
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DataVisualizationPager() {
     val pages = listOf("Gráfico", "Configuración")
